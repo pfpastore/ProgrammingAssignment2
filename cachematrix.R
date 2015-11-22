@@ -34,17 +34,17 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         
         ## Return a matrix that is the inverse of 'x'
-        print("x$getsolve()")
-        print(x$getsolve())
         
+        ##Set m to the inverse of the matrix if it has been calculated or to NULL if not
         m <- x$getsolve()
+        
+        ##Check if the inverse has been calculated. If so, warn the user that it was cached and exit.
         if(!is.null(m)) {
                 message("getting cached data")
                 return(m)
         }
-        print("x$get()")
-        print(x$get())
         
+        ##If the inverse of the matrix still NULL, use solve to calculate it and set it to m
         data <- x$get()
         m <- solve(data)
         x$setsolve(m)
